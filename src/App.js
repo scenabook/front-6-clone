@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import Works from './pages/Works';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
-
+import Products from './components/vjezbe/Products';
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
         <Route path="/works" element={<Works />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
 
       <Footer />
