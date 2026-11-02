@@ -17,6 +17,7 @@ import Recipes from './components/vjezbe/Recipes';
 import Posts from './components/vjezbe/Posts';
 import Users from './components/vjezbe/Users';
 import BlogSingle from './pages/BlogSingle';
+import Izvodaci from './pages/Izvodaci';
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,7 @@ function App() {
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/izvodaci" element={<Izvodaci />} />
       </Routes>
 
       <Footer />
