@@ -5,15 +5,32 @@
 }
 
 .blog-single__back {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 24px;
+  padding: 8px 18px;
+  background-color: #f3e8ec;
   color: #8c1c3a;
-  text-decoration: none;
+  border: none;
+  border-radius: 999px;
   font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .blog-single__back:hover {
-  color: #3b1838;
+  background-color: #3b1838;
+  color: #fff;
+}
+
+.blog-single__arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.blog-single__back:hover .blog-single__arrow {
+  transform: translateX(-4px);
 }
 
 .blog-single__date {
@@ -71,9 +88,10 @@
   padding: 12px 28px;
   background-color: #8c1c3a;
   color: #fff;
+  border: none;
   border-radius: 999px;
-  text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .blog-single__button:hover {
@@ -81,6 +99,7 @@
   color: #fff;
 }
 
+/* ===== Mobitel ===== */
 @media (max-width: 576px) {
   .blog-single__title {
     font-size: 2.2rem;

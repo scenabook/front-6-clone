@@ -23,7 +23,9 @@ function BlogSingle() {
     return (
         <div className="container">
             <article className="blog-single">
-                <button onClick={() => navigate(-1)} className="blog-single__back">← Natrag na blog</button>
+                <button onClick={() => navigate(-1)} className="blog-single__back">
+    <span className="blog-single__arrow">←</span> Natrag na blog
+</button>
 
                 <p className="blog-single__date">{datum}</p>
                 <h1 className="blog-single__title" dangerouslySetInnerHTML={{ __html: post.title.rendered }}></h1>
