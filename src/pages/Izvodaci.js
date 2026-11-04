@@ -32,7 +32,7 @@ function Izvodaci() {
     }, []);
 
     useEffect(() => {
-        let url = API + "sb_izvodjac?";
+        let url = API + "sb_izvodjac?per_page=20&";
 
         if (selectedVrsta) url += "sb_vrsta=" + selectedVrsta + "&";
         if (selectedDrzava) url += "sb_drzava=" + selectedDrzava + "&";
