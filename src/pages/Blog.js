@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "./Blog.css";
 
 const API = "https://front6.edukacija.online/backend/wp-json/wp/v2/";
-const ZAMJENSKA_SLIKA = "https://placehold.co/600x400/3b1838/d4a24c?text=ScenaBook";
 
 function Blog() {
 
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState("");
     const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState("6");
+
+    // Filteri iz adrese. Ako autor nije odabran, prikazuju se moje objave (autor 6).
+    const [searchParams, setSearchParams] = useSearchParams();
+    const selectedUser = searchParams.get("autor") ?? "6";
+    const selectedCategory = searchParams.get("kategorija") || "";
+
+    function promijeniFilter(ime, vrijednost) {
+        const novi = new URLSearchParams(searchParams);
+        if (vrijednost) {
+            novi.set(ime, vrijednost);
+        } else {
+            novi.delete(ime);
+        }
+        setSearchParams(novi);
+    }
 
     useEffect(() => {
         fetch(API + "users")
@@ -28,14 +40,14 @@ function Blog() {
     }, []);
 
     useEffect(() => {
-        let url = API + "posts?_embed&";
+        let url = API + "posts?_embed";
 
-        if (selectedUser) url += "author=" + selectedUser + "&";
-        if (selectedCategory) url += "categories=" + selectedCategory;
+        if (selectedUser && selectedUser !== "svi") url += "&author=" + selectedUser;
+        if (selectedCategory) url += "&categories=" + selectedCategory;
 
         fetch(url)
             .then(res => res.json())
-            .then(data => setPosts(data))
+            .then(data => setPosts(Array.isArray(data) ? data : []))
             .catch(err => console.error(err));
     }, [selectedUser, selectedCategory]);
 
@@ -45,15 +57,15 @@ function Blog() {
 
             <div className="row mb-5">
                 <div className="col-md-4 mb-3">
-                    <select className="form-select" value={selectedUser} onChange={e => setSelectedUser(e.target.value)}>
-                        <option value="">Svi autori</option>
+                    <select className="form-select" value={selectedUser} onChange={e => promijeniFilter("autor", e.target.value)}>
+                        <option value="svi">Svi autori</option>
                         {users.map(user => (
                             <option key={user.id} value={user.id}>{user.name}</option>
                         ))}
                     </select>
                 </div>
                 <div className="col-md-4 mb-3">
-                    <select className="form-select" value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)}>
+                    <select className="form-select" value={selectedCategory} onChange={e => promijeniFilter("kategorija", e.target.value)}>
                         <option value="">Sve kategorije</option>
                         {categories.map(category => (
                             <option key={category.id} value={category.id}>{category.name}</option>
@@ -64,13 +76,13 @@ function Blog() {
 
             <div className="row g-4 mb-5">
                 {posts.map(post => {
-                    const slika = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || ZAMJENSKA_SLIKA;
+                    const slika = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
                     const datum = new Date(post.date).toLocaleDateString("hr-HR");
 
                     return (
                         <div className="col-12 col-md-6 col-lg-4" key={post.id}>
                             <article className="blog-card">
-                                <img src={slika} alt="" className="blog-card__image" />
+                                {slika && <img src={slika} alt="" className="blog-card__image" />}
                                 <div className="blog-card__content">
                                     <p className="blog-card__date">{datum}</p>
                                     <h2 className="blog-card__title">
