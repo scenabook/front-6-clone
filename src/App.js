@@ -18,6 +18,7 @@ import Posts from './components/vjezbe/Posts';
 import Users from './components/vjezbe/Users';
 import BlogSingle from './pages/BlogSingle';
 import Izvodaci from './pages/Izvodaci';
+import IzvodacSingle from './pages/IzvodacSingle';
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +35,7 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/users" element={<Users />} />
         <Route path="/izvodaci" element={<Izvodaci />} />
+        <Route path="/izvodac/:slug" element={<IzvodacSingle />} />
       </Routes>
 
       <Footer />
