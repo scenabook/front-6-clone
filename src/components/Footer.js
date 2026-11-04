@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Twitter, Linkedin } from 'react-bootstrap-icons';
-
+import { Link } from "react-router-dom";
 
 function Footer() {
 
@@ -15,6 +15,10 @@ function Footer() {
             </p>
             <p>
                 Copyright ©2020 All rights reserved 
+                <p className="text-center mt-2">
+    <Link to="/politika-privatnosti" className="me-3">Politika privatnosti</Link>
+    <Link to="/politika-kolacica">Politika kolačića</Link>
+</p>
             </p>
             </div>
         </div>
