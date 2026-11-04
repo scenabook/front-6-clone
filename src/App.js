@@ -19,6 +19,7 @@ import Users from './components/vjezbe/Users';
 import BlogSingle from './pages/BlogSingle';
 import Izvodaci from './pages/Izvodaci';
 import IzvodacSingle from './pages/IzvodacSingle';
+import PolitikaPrivatnosti from './pages/PolitikaPrivatnosti';
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +37,7 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/izvodaci" element={<Izvodaci />} />
         <Route path="/izvodac/:slug" element={<IzvodacSingle />} />
+        <Route path="/politika-privatnosti" element={<PolitikaPrivatnosti />} />
       </Routes>
 
       <Footer />
