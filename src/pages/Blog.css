@@ -1,8 +1,8 @@
 .blog-card {
-  background: #fff;
-  border-radius: 16px;
+  background: var(--sb-bijela);
+  border-radius: var(--sb-radius);
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(59, 24, 56, 0.08);
+  box-shadow: var(--sb-sjena);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
 .blog-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(59, 24, 56, 0.15);
+  box-shadow: var(--sb-sjena-hover);
 }
 
 .blog-card__image {
@@ -29,43 +29,41 @@
 
 .blog-card__date {
   font-size: 0.85rem;
-  color: #8c1c3a;
+  color: var(--sb-vino);
   margin-bottom: 8px;
 }
 
 .blog-card__title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-bottom: 12px;
 }
 
 .blog-card__title a {
-  color: #3b1838;
+  color: var(--sb-sljiva);
   text-decoration: none;
 }
 
 .blog-card__title a:hover {
-  color: #8c1c3a;
+  color: var(--sb-vino);
 }
 
 .blog-card__excerpt {
-  color: #5a4a55;
+  color: var(--sb-tekst-svijetli);
   font-size: 0.95rem;
-}
-
-.blog-card__read-more {
-  margin-top: auto;
-  font-weight: 600;
-  color: #8c1c3a;
-  text-decoration: none;
-}
-
-.blog-card__read-more:hover {
-  color: #3b1838;
-}
-.blog-card__excerpt {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 16px;
+}
+
+.blog-card__read-more {
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--sb-vino);
+  text-decoration: none;
+}
+
+.blog-card__read-more:hover {
+  color: var(--sb-sljiva);
 }

@@ -35,7 +35,7 @@ function BlogSingle() {
                 <div className="blog-single__content" dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
 
                 <div className="blog-single__footer">
-                    <button onClick={() => navigate(-1)} className="blog-single__button">Natrag na blog</button>
+                   <button onClick={() => navigate(-1)} className="sb-button">Natrag na blog</button>
                 </div>
             </article>
         </div>
