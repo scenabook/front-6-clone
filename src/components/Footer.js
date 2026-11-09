@@ -3,26 +3,27 @@ import { Link } from "react-router-dom";
 
 function Footer() {
 
-
     return (
-        <div class="footer">
-            <div class="container">
-            <p>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" ><Facebook /></a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer"><Instagram /></a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer"><Twitter /></a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer"><Linkedin /></a>
-            </p>
-            <p>
-                Copyright ©2020 All rights reserved 
-                <p className="text-center mt-2">
-    <Link to="/politika-privatnosti" className="me-3">Politika privatnosti</Link>
-    <Link to="/politika-kolacica">Politika kolačića</Link>
-</p>
-            </p>
+        <div className="footer">
+            <div className="container">
+                <p>
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer"><Facebook size={40} /></a>
+                    <a href="https://instagram.com" target="_blank" rel="noreferrer"><Instagram size={40} /></a>
+                    <a href="https://twitter.com" target="_blank" rel="noreferrer"><Twitter size={40} /></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer"><Linkedin size={40} /></a>
+                </p>
+
+                <p className="text-center">
+                    Copyright ©2020 All rights reserved
+                </p>
+
+                <div className="text-center mt-2">
+                    <Link to="/politika-privatnosti" className="me-3">Politika privatnosti</Link>
+                    <Link to="/politika-kolacica">Politika kolačića</Link>
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Footer;
