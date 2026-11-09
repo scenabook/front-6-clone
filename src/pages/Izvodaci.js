@@ -63,13 +63,13 @@ function Izvodaci() {
                 onZanr={setSelectedZanr}
             />
 
-            <div className="row">
-                {izvodaci.map(izvodac => (
-                    <div className="col-md-4 mb-4" key={izvodac.id}>
-                        <IzvodacCard izvodac={izvodac} />
-                    </div>
-                ))}
-            </div>
+            <div className="row g-4 mb-5">
+    {izvodaci.map(izvodac => (
+        <div className="col-12 col-md-6 col-lg-4" key={izvodac.id}>
+            <IzvodacCard izvodac={izvodac} pojmovi={[...vrste, ...drzave, ...zanrovi]} />
+        </div>
+    ))}
+</div>
         </div>
     );
 }

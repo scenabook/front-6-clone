@@ -1,0 +1,86 @@
+.izvodac-card {
+  background: var(--sb-bijela);
+  border-radius: var(--sb-radius);
+  overflow: hidden;
+  box-shadow: var(--sb-sjena);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.izvodac-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sb-sjena-hover);
+}
+
+.izvodac-card__top {
+  position: relative;
+  height: 140px;
+  background: linear-gradient(135deg, var(--sb-sljiva), var(--sb-vino));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.izvodac-card__initials {
+  font-family: var(--sb-font-naslov);
+  font-size: 3.5rem;
+  letter-spacing: 3px;
+  color: var(--sb-zlatna);
+}
+
+.izvodac-card__plan {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+}
+
+.izvodac-card__content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.izvodac-card__name {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.izvodac-card__name a {
+  color: var(--sb-sljiva);
+  text-decoration: none;
+}
+
+.izvodac-card__name a:hover {
+  color: var(--sb-vino);
+}
+
+.izvodac-card__place {
+  color: var(--sb-tekst-svijetli);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.izvodac-card__tags {
+  margin-bottom: 12px;
+}
+
+.izvodac-card__price {
+  font-weight: 600;
+  color: var(--sb-vino);
+  margin-bottom: 16px;
+}
+
+.izvodac-card__link {
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--sb-vino);
+  text-decoration: none;
+}
+
+.izvodac-card__link:hover {
+  color: var(--sb-sljiva);
+}
