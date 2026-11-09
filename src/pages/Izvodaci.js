@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import IzvodacCard from "../components/IzvodacCard";
+import IzvodacFilters from "../components/IzvodacFilters";
 
 const API = "https://front6.edukacija.online/backend/wp-json/wp/v2/";
 
@@ -14,74 +15,58 @@ function Izvodaci() {
     const [selectedDrzava, setSelectedDrzava] = useState("");
     const [selectedZanr, setSelectedZanr] = useState("");
 
+    // Popisi za izbornike (samo jednom)
     useEffect(() => {
-        fetch(API + "sb_vrsta?_fields=id,name")
+        fetch(API + "sb_vrsta?_fields=id,name&per_page=100")
             .then(res => res.json())
             .then(data => setVrste(data))
             .catch(err => console.error(err));
 
-        fetch(API + "sb_drzava?_fields=id,name")
+        fetch(API + "sb_drzava?_fields=id,name&per_page=100")
             .then(res => res.json())
             .then(data => setDrzave(data))
             .catch(err => console.error(err));
 
-        fetch(API + "sb_zanr?_fields=id,name")
+        fetch(API + "sb_zanr?_fields=id,name&per_page=100")
             .then(res => res.json())
             .then(data => setZanrovi(data))
             .catch(err => console.error(err));
     }, []);
 
-    useEffect(() => {
-        let url = API + "sb_izvodjac?per_page=20&";
 
-        if (selectedVrsta) url += "sb_vrsta=" + selectedVrsta + "&";
-        if (selectedDrzava) url += "sb_drzava=" + selectedDrzava + "&";
-        if (selectedZanr) url += "sb_zanr=" + selectedZanr;
+    useEffect(() => {
+        let url = API + "sb_izvodjac?per_page=20";
+
+        if (selectedVrsta) url += "&sb_vrsta=" + selectedVrsta;
+        if (selectedDrzava) url += "&sb_drzava=" + selectedDrzava;
+        if (selectedZanr) url += "&sb_zanr=" + selectedZanr;
 
         fetch(url)
             .then(res => res.json())
-            .then(data => setIzvodaci(data))
+            .then(data => setIzvodaci(Array.isArray(data) ? data : []))
             .catch(err => console.error(err));
     }, [selectedVrsta, selectedDrzava, selectedZanr]);
-
-    console.log(izvodaci);
 
     return (
         <div className="container">
             <h1 className="display-4 text-center py-5">Izvođači</h1>
 
-            <div className="row mb-4">
-                <div className="col-md-4">
-                    <select className="form-select" value={selectedVrsta} onChange={e => setSelectedVrsta(e.target.value)}>
-                        <option value="">Sve vrste</option>
-                        {vrste.map(v => (
-                            <option key={v.id} value={v.id}>{v.name}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="col-md-4">
-                    <select className="form-select" value={selectedDrzava} onChange={e => setSelectedDrzava(e.target.value)}>
-                        <option value="">Sve države</option>
-                        {drzave.map(d => (
-                            <option key={d.id} value={d.id}>{d.name}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="col-md-4">
-                    <select className="form-select" value={selectedZanr} onChange={e => setSelectedZanr(e.target.value)}>
-                        <option value="">Svi žanrovi</option>
-                        {zanrovi.map(z => (
-                            <option key={z.id} value={z.id}>{z.name}</option>
-                        ))}
-                    </select>
-                </div>
-            </div>
+            <IzvodacFilters
+                vrste={vrste}
+                drzave={drzave}
+                zanrovi={zanrovi}
+                selectedVrsta={selectedVrsta}
+                selectedDrzava={selectedDrzava}
+                selectedZanr={selectedZanr}
+                onVrsta={setSelectedVrsta}
+                onDrzava={setSelectedDrzava}
+                onZanr={setSelectedZanr}
+            />
 
             <div className="row">
                 {izvodaci.map(izvodac => (
                     <div className="col-md-4 mb-4" key={izvodac.id}>
-                        <h2 dangerouslySetInnerHTML={{ __html: izvodac.title.rendered }}></h2>
-                        <Link to={'/izvodac/' + izvodac.slug}>Pogledaj profil</Link>
+                        <IzvodacCard izvodac={izvodac} />
                     </div>
                 ))}
             </div>
