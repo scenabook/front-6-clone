@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap');
 
 body{
 	font-family: "Heebo", sans-serif;
@@ -155,3 +156,91 @@ a{
 .blog .box{
 	border-bottom: 1px solid #E0E0E0;
 }
+
+/* =========================================
+   SCENABOOK DIZAJN – sve na jednom mjestu
+   ========================================= */
+:root {
+  --sb-sljiva: #3b1838;
+  --sb-sljiva-tamna: #2a1028;
+  --sb-vino: #8c1c3a;
+  --sb-vino-tamno: #6e1530;
+  --sb-zlatna: #d4a24c;
+  --sb-krem: #faf6f1;
+  --sb-roza: #f3e8ec;
+  --sb-tekst: #2b2228;
+  --sb-tekst-svijetli: #5a4a55;
+  --sb-linija: #e8dfe4;
+  --sb-bijela: #ffffff;
+
+  --sb-font-naslov: "Bebas Neue", sans-serif;
+  --sb-font-tekst: "Work Sans", sans-serif;
+
+  --sb-radius: 16px;
+  --sb-radius-pill: 999px;
+  --sb-sjena: 0 4px 16px rgba(59, 24, 56, 0.08);
+  --sb-sjena-hover: 0 10px 28px rgba(59, 24, 56, 0.15);
+}
+
+body {
+  font-family: var(--sb-font-tekst);
+  color: var(--sb-tekst);
+  background-color: var(--sb-krem);
+}
+
+h1, h2, h3, h4, h5, h6,
+.display-4 {
+  font-family: var(--sb-font-naslov);
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--sb-sljiva);
+}
+
+a {
+  color: var(--sb-vino);
+}
+
+a:hover {
+  color: var(--sb-sljiva);
+}
+
+.sb-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--sb-vino);
+  color: var(--sb-bijela);
+  border: none;
+  border-radius: var(--sb-radius-pill);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sb-button:hover {
+  background-color: var(--sb-sljiva);
+  color: var(--sb-bijela);
+}
+
+.sb-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: var(--sb-roza);
+  color: var(--sb-sljiva);
+  border-radius: var(--sb-radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 6px 6px 0;
+}
+
+.sb-badge--zlatna {
+  background-color: var(--sb-zlatna);
+  color: var(--sb-sljiva-tamna);
+  text-transform: uppercase;
+}
+
+.form-select:focus {
+  border-color: var(--sb-zlatna);
+  box-shadow: 0 0 0 0.2rem rgba(212, 162, 76, 0.25);
+}
+
+/* ===== Kraj ScenaBook dizajna ===== */
