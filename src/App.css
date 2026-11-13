@@ -242,5 +242,11 @@ a:hover {
   border-color: var(--sb-zlatna);
   box-shadow: 0 0 0 0.2rem rgba(212, 162, 76, 0.25);
 }
+.featured-works .swiper {
+  padding-bottom: 40px;
+}
 
-/* ===== Kraj ScenaBook dizajna ===== */
+.featured-works .swiper-slide {
+  padding: 0 50px;
+  box-sizing: border-box;
+}
